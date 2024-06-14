@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+      <body>
+            <h1>Feedback Form</h1>
+            <div id="form" class="form">
+                  <h2>Form</h2>
+                  <form id="feedbackForm" novalidate>
+                        <input type="text" id="name" placeholder="Entrez votre nom" required minlength="3">
+                        <p id="errorName" class="errorName">Veuillez entrer votre nom</p>
+                        <input type="email" id="mail" placeholder="Entrez votre mail" required>
+                        <p id="errorMail" class="errorMail">Veuillez entrer votre email</p>
+                        <textarea type="text" id="feedback" placeholder="Entrez votre message" minlength="3" maxlength="300" pattern="text" required></textarea>
+                        <p id="errorFeedback" class="errorFeedback">Veuillez entrer un message</p>
+                        <select id="star" required>
+                              <option value="">Selectionnez une note</option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                        </select>
+                        <p id="errorStar" class="errorStar">Veuillez selectionner une note</p>
+                        <button type="submit">Envoyer</button>
+                  </form>
+                  <div id="success" class="success">Votre feedback a été envoyé avec succès</div>
+                  <div id="error" class="error">Veuillez remplir tous les champs correctement.</div>
+            </div>
+            <script>
+                  // EXERCICE FEEDBACK FORM
+
+                  // Retour Chris: mettre les erreurs en temps réel
+
+                  // Déclaration des variables en récupèrant la valeur des champs du form
+                  const feedbackForm = document.getElementById('feedbackForm');
+                  const nameInput = document.getElementById('name');
+                  const mailInput = document.getElementById('mail');
+                  const feedbackInput = document.getElementById('feedback');
+                  const starInput = document.getElementById('star');
+
+
+                  // Validation en temps réel pour le champ 'name'
+                  nameInput.addEventListener('input', function() {
+                        const errorName = document.getElementById('errorName');
+                        if (!nameInput.validity.valid) {
+                        errorName.style.display = 'block';
+                        } else {
+                        errorName.style.display = 'none';
+                        }
+                  });
+
+                  // Validation en temps réel pour le champ 'mail'
+                  mailInput.addEventListener('input', function() {
+                        const errorMail = document.getElementById('errorMail');
+                        if (!mailInput.validity.valid) {
+                        errorMail.style.display = 'block';
+                        } else {
+                        errorMail.style.display = 'none';
+                        }
+                  });
+
+                  // Validation en temps réel pour le champ 'feedback'
+                  feedbackInput.addEventListener('input', function() {
+                        const errorFeedback = document.getElementById('errorFeedback');
+                        if (!feedbackInput.validity.valid) {
+                        errorFeedback.style.display = 'block';
+                        } else {
+                        errorFeedback.style.display = 'none';
+                        }
+                  });
+
+                  // Validation en temps réel pour le champ 'star'
+                  starInput.addEventListener('change', function() {
+                        const errorStar = document.getElementById('errorStar');
+                        if (starInput.value === '') {
+                        errorStar.style.display = 'block';
+                        } else {
+                        errorStar.style.display = 'none';
+                        }
+                  });
+
+                  // Travail effectué avant les retours
+
+                  // Ecouter ce que le contient le formulaire form et executer la fonction suivante lorsque le formulaire est soumis
+                  document.getElementById('form').addEventListener('submit', function(e) {
+
+                        // Empeche le rechargement de la page (comportement par défault du formulaire)
+                        e.preventDefault();
+
+                        // Déclaration des variables en récupèrant la valeur des champs du form
+                        const name = document.getElementById('name').value;
+                        const mail = document.getElementById('mail').value;
+                        const feedback = document.getElementById('feedback').value;
+                        const star = document.getElementById('star').value;
+
+                        let error = false;
+
+                        // Filtres qui permettent d'afficher le message d'erreur si le champs est vide
+                        if (name === '') {
+                        document.getElementById('errorName').style.display = 'block';
+                        error = true;
+                        } 
+
+                        if (mail === '') {
+                        document.getElementById('errorMail').style.display = 'block';
+                        error = true;
+                        }
+
+                        if (feedback === '') {
+                        document.getElementById('errorFeedback').style.display = 'block';
+                        error = true;
+                        }
+
+                        if (star === '') {
+                        document.getElementById('errorStar').style.display = 'block';
+                        error = true;
+                        }
+                        if (error) {
+                        // Afficher le message d'erreur général
+                        document.getElementById('error').style.display = 'block';
+                        document.getElementById('success').style.display = 'none';
+                        }
+
+                        else {
+                              // Supression des messages error
+                              document.getElementById('errorName').style.display = 'none';
+                              document.getElementById('errorMail').style.display = 'none';
+                              document.getElementById('errorFeedback').style.display = 'none';
+                              document.getElementById('errorStar').style.display = 'none';
+                              // Afficher le message de succès et cacher le message d'erreur
+                              document.getElementById('success').style.display = 'block';
+                              document.getElementById('error').style.display = 'none';
+                        
+                              // Affichage des elements dans un message d'alerte
+                              alert('Nom: ' + name + '\nMail: ' + mail + '\nCommentaires: ' + feedback + '\nNote: ' + star);
+      
+                              // Affichage de la div success
+                              document.getElementById('success').style.display = 'block';
+
+                               // Réinitialiser le formulaire après envoi
+                              e.target.reset();
+                        }
+                  });
+            </script>
+      </body>
+</html>

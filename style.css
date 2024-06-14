@@ -1,0 +1,101 @@
+body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+      background-color: #0F1316;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+}
+
+
+#feedbackForm{
+      display: flex;
+      flex-direction: column;
+}
+
+.form {
+      background-color: #2F5D82;
+      padding: 20px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+}
+
+.form h2{
+      color: #EEEFEF;
+}
+
+.form input {
+      margin-bottom: 10px;
+      padding: 10px;
+      width: 300px;
+      font-size: 1em;
+}
+
+.form textarea{
+      width: 302px;
+      font-size: 1em;
+      margin-bottom: 10px;
+      padding: 10px;
+}
+
+.form select{
+      margin-bottom: 10px;
+      padding: 10px;
+      width: 324px;
+      font-size: 1em;
+}
+
+.form button {
+      padding: 10px;
+      width: 325px;
+      font-size: 1em;
+      background-color: #4D98D4;
+      color: #EEEFEF;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+}
+
+.form button:hover {
+      background-color: #A1BACF;
+      color: #EEEFEF;
+}
+
+.success {
+      display: none;
+      color: rgb(2, 221, 2);
+      margin-top: 10px;
+}
+
+.error, .errorName, .errorMail, .errorFeedback, .errorStar {
+      display: none;
+      color: rgb(255, 119, 119);
+      margin-top: 10px;
+}
+
+.error {
+      color: rgb(255, 132, 132);
+      display: none;
+}
+.success {
+      color: rgb(88, 198, 88);
+      display: none;
+}
+  
+
+input, select, textarea{
+      border: none;
+      outline: none
+}
+
+input:invalid, textarea:invalid, select:invalid {
+      border: 4px solid rgb(255, 132, 132);
+}
+input:valid, textarea:valid, select:valid {
+      border: 4px solid rgb(88, 198, 88);
+}
